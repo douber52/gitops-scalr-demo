@@ -48,8 +48,9 @@ Thumbs.db
 # Terraform lock file (optional - some teams commit this)
 # .terraform.lock.hcl
 
-# AI assistance files (internal use only)
+# Internal files (not for clients)
 CLAUDE.md
+DEMO_SCRIPT.md
 
 # Plan files
 .claude/

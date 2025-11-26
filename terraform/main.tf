@@ -25,8 +25,9 @@ resource "random_id" "bucket_suffix" {
 
 # Main demo GCS bucket
 resource "google_storage_bucket" "demo" {
-  name     = "goodrx-gitops-demo-${random_id.bucket_suffix.hex}"
-  location = var.gcp_region
+  name          = "goodrx-gitops-demo-${random_id.bucket_suffix.hex}"
+  location      = var.gcp_region
+  storage_class = "STANDARD"
 
   # Prevent accidental deletion
   force_destroy = false
@@ -53,6 +54,17 @@ resource "google_storage_bucket" "demo" {
     }
     action {
       type = "Delete"
+    }
+  }
+
+  # Transition old objects to cheaper storage for cost savings
+  lifecycle_rule {
+    condition {
+      age = 30
+    }
+    action {
+      type          = "SetStorageClass"
+      storage_class = "NEARLINE"
     }
   }
 

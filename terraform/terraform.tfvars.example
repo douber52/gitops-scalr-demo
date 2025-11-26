@@ -1,0 +1,13 @@
+# Example Terraform Variables for Scalr Demo
+# Copy this file to terraform.tfvars and update with your actual values
+# WARNING: Never commit terraform.tfvars to version control!
+
+# GCP Project Configuration
+gcp_project_id = "e360-lab"
+gcp_region     = "us-west1"
+
+# Environment Configuration
+environment = "demo"
+
+# Optional: Enable versioning
+enable_versioning = false
